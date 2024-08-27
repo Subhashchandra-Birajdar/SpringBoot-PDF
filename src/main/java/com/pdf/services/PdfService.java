@@ -25,7 +25,7 @@ public class PdfService {
 
         logger.info("Create PDF Started : ");
 
-        String title = "TechArchitect by Paras Bagga";
+        String title = "TechArchitect by Subhash Birajdar";
         String content = "We provide Web Development Services";
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -34,16 +34,19 @@ public class PdfService {
 
         PdfWriter.getInstance(document, out);
 
+        // Create and set a footer
          HeaderFooter footer = new HeaderFooter(true, new Phrase("TechArchitects"));
             footer.setBorderWidthBottom(0);
             document.setFooter(footer);
 
         document.open();
 
+        // Add title with custom font
         Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 25);
         Paragraph titlePara = new Paragraph(title, titleFont);
         document.add(titlePara);
 
+        // Add content paragraph with custom font
         Font paraFont = FontFactory.getFont(FontFactory.HELVETICA, 18);
         Paragraph paragraph = new Paragraph(content, paraFont);
         paragraph.add(new Chunk("This text is added while"));

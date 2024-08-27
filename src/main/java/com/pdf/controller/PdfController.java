@@ -20,10 +20,12 @@ public class PdfController {
 
     @PostMapping("/createPdf")
     public ResponseEntity<InputStreamResource> createPdf() {
-
+        // Generate PDF and obtain it as a ByteArrayInputStream
         ByteArrayInputStream pdf = pdfService.createPdf();
+        // Set up HTTP headers for the response
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Disposition", "inline; filename=springboot.pdf");
+        // Create and return the ResponseEntity with PDF data
         return ResponseEntity
                 .ok()
                 .headers(httpHeaders)
